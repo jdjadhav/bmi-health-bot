@@ -11,14 +11,13 @@ FRONTEND_DIR = os.path.join(BASE_DIR, '..', 'frontend')
 app = Flask(__name__, static_folder=FRONTEND_DIR, static_url_path='')
 CORS(app)
 
-# Load model
-model_path = os.path.join(BASE_DIR, 'bmi_model.pkl')
-if os.path.exists(model_path):
-    with open(model_path, 'rb') as f:
-        model = pickle.load(f)
-else:
+# Load the trained model
+try:
+    model_path = os.path.join(os.path.dirname(__file__), "bmi_model.pkl")
+    model = pickle.load(open(model_path, "rb"))
+except FileNotFoundError:
     model = None
-    print("Warning: Model file not found. Please run train_model.py first.")
+    print(f"Model file not found at {model_path}. Please train the model first.")
 
 @app.route('/')
 def serve_dashboard():
