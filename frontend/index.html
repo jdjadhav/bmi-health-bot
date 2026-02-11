@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare BMI Bot</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="dashboard.html" class="nav-brand" style="text-decoration: none;">
+                <img src="logo.svg" alt="BMI Bot Logo" style="width: 35px; height: 35px;">
+                <span>BMI Bot</span>
+            </a>
+            <div class="nav-links desktop-menu">
+                <a href="dashboard.html" class="nav-link active">Home</a>
+                <a href="javascript:void(0)" onclick="alert('Please calculate your BMI to unlocked personalized tips!')"
+                    class="nav-link">News/Tips</a>
+                <a href="games.html" class="nav-link">Games</a>
+                <a href="#about" class="nav-link">About</a>
+            </div>
+            <div class="nav-actions">
+                <button id="themeToggle" class="nav-btn" aria-label="Toggle Dark Mode">🌙</button>
+                <button onclick="window.location.href='index.html'" class="nav-btn primary-btn">New Calculation</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="centered-main">
+        <div class="container">
+            <header>
+                <h1>BMI Health Bot</h1>
+                <p>Calculate your Body Mass Index instantly with AI precision.</p>
+            </header>
+
+            <form id="bmiForm">
+                <div class="input-group">
+                    <label for="height">Height (cm)</label>
+                    <input type="number" id="height" placeholder="e.g., 170" required min="50" max="300">
+                    <span class="error-message" id="heightError"></span>
+                </div>
+
+                <div class="input-group">
+                    <label for="weight">Weight (kg)</label>
+                    <input type="number" id="weight" placeholder="e.g., 70" required min="20" max="500">
+                    <span class="error-message" id="weightError"></span>
+                </div>
+
+                <button type="submit" id="calculateBtn" class="anti-gravity">Calculate BMI</button>
+            </form>
+
+            <div id="result" class="hidden">
+                <div class="result-card">
+                    <h2>Your Results</h2>
+                    <div class="score">
+                        <span id="bmiValue">--</span>
+                        <small>BMI</small>
+                    </div>
+                    <p id="bmiCategory" class="category">Normal</p>
+                    <p class="advice"> maintain a healthy lifestyle!</p>
+                </div>
+            </div>
+        </div> <!-- End container -->
+    </main>
+
+
+
+    <footer>
+        <div class="main-footer" style="padding-top: 2rem; background: transparent; border: none; margin-top: 0;">
+            <div class="footer-content" style="margin-bottom: 0;">
+                <div id="about" class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Healthcare BMI-Bot is dedicated to helping you achieve your wellness goals through AI-powered
+                        insights.</p>
+                </div>
+                <div id="contact" class="footer-section">
+                    <h3>Contact</h3>
+                    <p>jadhavjd030@gmail.com</p>
+                    <p>1-800-HEALTH-AI</p>
+                </div>
+            </div>
+            <p style="margin-top: 2rem;">&copy; 2024 Healthcare BMI Bot</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script src="antigravity.js"></script>
+    <script src="theme.js"></script>
+</body>
+
+</html>

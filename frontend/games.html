@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Games - BMI Health Bot</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="dashboard.html" class="nav-brand" style="text-decoration: none;">
+                <img src="logo.svg" alt="BMI Bot Logo" style="width: 35px; height: 35px;">
+                <span>BMI Bot</span>
+            </a>
+            <div class="nav-links desktop-menu">
+                <a href="dashboard.html" class="nav-link">Home</a>
+                <a href="dashboard.html#recommendations" class="nav-link">News/Tips</a>
+                <a href="games.html" class="nav-link active">Games</a>
+                <a href="#about" class="nav-link">About</a>
+            </div>
+            <div class="nav-actions">
+                <button id="themeToggle" class="nav-btn" aria-label="Toggle Dark Mode">🌙</button>
+                <button onclick="window.location.href='index.html'" class="nav-btn primary-btn">New Calculation</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <h1>Healthcare Learning Games</h1>
+            <p class="tagline">Learn health in a fun, interactive way.</p>
+        </header>
+
+        <!-- Games Grid -->
+        <main class="games-grid">
+
+            <!-- Game 1: Food Sorter -->
+            <section class="card game-card anti-gravity" id="game1">
+                <div class="game-header" onclick="toggleGame('game1')">
+                    <div class="header-left">
+                        <h2>🍎 Nutritious Food Sorter</h2>
+                        <span class="game-badge">Drag & Drop</span>
+                    </div>
+                    <div class="header-right">
+                        <span id="foodScoreBadge" class="score-badge hidden">Score: 0</span>
+                        <span class="game-toggle-icon">▼</span>
+                    </div>
+                </div>
+
+                <div class="game-content">
+                    <div class="game-progress-container">
+                        <div class="game-progress-bar" id="gameProgress"></div>
+                    </div>
+
+                    <p class="game-desc">Drag the food cards into the correct basket!</p>
+
+                    <div id="food-game-container" class="game-area food-game-area">
+                        <div class="food-source" id="foodSource">
+                            <!-- Draggable items injected by JS -->
+                        </div>
+
+                        <div class="baskets-wrapper">
+                            <div class="basket-zone" data-type="healthy">
+                                <div class="basket-inner healthy-basket">
+                                    <span class="basket-icon">🥗</span>
+                                    <h3>Healthy</h3>
+                                </div>
+                            </div>
+                            <div class="basket-zone" data-type="junk">
+                                <div class="basket-inner junk-basket">
+                                    <span class="basket-icon">🍔</span>
+                                    <h3>Junk</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="game-footer">
+                        <div id="comboDisplay" class="combo-text"></div>
+                        <button id="resetFoodGame" class="game-btn gradient-btn">
+                            <span>🔄</span> Reset Game
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Game 2: Exercise Match -->
+            <section class="card game-card anti-gravity">
+                <div class="game-header">
+                    <h2>🏃‍♂️ Exercise Match</h2>
+                    <span class="game-badge">Memory</span>
+                </div>
+                <!-- Game 2: Fitness Architect -->
+                <section class="card game-card anti-gravity" id="game2">
+                    <div class="game-header" onclick="toggleGame('game2')">
+                        <div class="header-left">
+                            <h2>🏗️ Fitness Architect</h2>
+                            <span class="game-badge">Strategy</span>
+                        </div>
+                        <div class="header-right">
+                            <span class="game-toggle-icon">▼</span>
+                        </div>
+                    </div>
+
+                    <div class="game-content">
+                        <div class="architect-header">
+                            <div class="balance-meter-container">
+                                <span>Workout Balance</span>
+                                <div class="meter-bar-bg">
+                                    <div id="fitnessBalanceBar" class="meter-bar-fill"></div>
+                                </div>
+                                <span id="balanceText">0% Balanced</span>
+                            </div>
+                            <div class="moves-counter">
+                                <span id="architectMoves">Moves: 0</span>
+                            </div>
+                        </div>
+
+                        <div id="architect-game-area" class="game-area split-area">
+                            <!-- Left Panel: Exercise Deck -->
+                            <div class="exercise-deck-panel">
+                                <h3>Exercise Deck</h3>
+                                <div id="exerciseDeck" class="deck-grid">
+                                    <!-- Cards injected by JS -->
+                                </div>
+                            </div>
+
+                            <!-- Right Panel: Target Zones -->
+                            <div class="target-zones-panel">
+                                <div class="zone-row">
+                                    <div class="target-zone" data-zone="Cardio" id="zone-Cardio">
+                                        <div class="zone-icon">🫀</div>
+                                        <span>Cardio</span>
+                                        <div class="zone-progress-ring"></div>
+                                    </div>
+                                    <div class="target-zone" data-zone="Strength" id="zone-Strength">
+                                        <div class="zone-icon">💪</div>
+                                        <span>Strength</span>
+                                        <div class="zone-progress-ring"></div>
+                                    </div>
+                                </div>
+                                <div class="zone-row">
+                                    <div class="target-zone" data-zone="Flexibility" id="zone-Flexibility">
+                                        <div class="zone-icon">🧘</div>
+                                        <span>Flexibility</span>
+                                        <div class="zone-progress-ring"></div>
+                                    </div>
+                                    <div class="target-zone" data-zone="Endurance" id="zone-Endurance">
+                                        <div class="zone-icon">🔥</div>
+                                        <span>Endurance</span>
+                                        <div class="zone-progress-ring"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="game-footer">
+                            <button id="resetArchitectGame" class="game-btn gradient-btn pulse-hover">
+                                <span>🔄</span> Reset Blueprint
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Game 3: Nutrient Quiz -->
+                <!-- Game 3: Adventure Quiz -->
+                <section class="card game-card anti-gravity" id="game3">
+                    <div class="game-header" onclick="toggleGame('game3')">
+                        <div class="header-left">
+                            <h2>🧭 Nutrition Explorer</h2>
+                            <span class="game-badge" id="levelBadge">Lvl 1</span>
+                        </div>
+                        <div class="header-right">
+                            <div id="quizLives" class="lives-container">❤️❤️❤️</div>
+                            <span class="game-toggle-icon">▼</span>
+                        </div>
+                    </div>
+
+                    <div class="game-content">
+                        <div class="quiz-status-bar">
+                            <div class="timer-container">
+                                <div id="quizTimerBar" class="timer-bar"></div>
+                            </div>
+                            <div class="xp-container">
+                                <div id="quizXPBar" class="xp-bar"></div>
+                                <span id="xpText">0 XP</span>
+                            </div>
+                        </div>
+
+                        <div id="adventure-quiz-container" class="game-area adventure-area">
+                            <div class="quiz-layout">
+                                <div class="quiz-hero-column">
+                                    <div class="hero-fruit-bg">
+                                        <div id="quizHeroIcon" class="hero-fruit">🍎</div>
+                                    </div>
+                                </div>
+                                <div class="quiz-content-column">
+                                    <h3 id="questionText" class="adventure-question">Ready for adventure?</h3>
+                                    <div id="quizOptions" class="adventure-options">
+                                        <!-- Options injected by JS -->
+                                        <button class="adventure-btn-start" onclick="initQuizGame()">Start
+                                            Adventure</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="game-footer">
+                            <button id="resetQuizGame" class="game-btn gradient-btn pulse-hover">
+                                <span>🔄</span> Restart Adventure
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+        </main>
+
+        <!-- Level Complete Modal -->
+        <div id="levelCompleteModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+                <h2>🎉 Level Complete!</h2>
+                <div class="modal-body">
+                    <p class="modal-emoji">🏆</p>
+                    <p>Great job! You're a Nutrition Master! 🥗🔥</p>
+                    <p id="finalScoreDisplay" class="final-score">Score: 0</p>
+                    <button class="primary-btn" onclick="closeModal()">Play Again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div id="about" class="footer-section">
+                <h3>About Us</h3>
+                <p>Healthcare BMI-Bot is dedicated to helping you achieve your wellness goals through AI-powered
+                    insights. Our mission is to make health tracking simple, accessible, and actionable for everyone.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div id="contact" class="footer-section">
+                <h3>Contact</h3>
+                <p>jadhavjd030@gmail.com</p>
+                <p>1-800-HEALTH-AI</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>⚠️ Disclaimer: This tool does not provide medical advice.</p>
+            <p>&copy; 2024 Healthcare BMI Bot. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="theme.js"></script>
+    <script src="games.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - BMI Health Bot</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="dashboard.html" class="nav-brand" style="text-decoration: none;">
+                <img src="logo.svg" alt="BMI Bot Logo" style="width: 35px; height: 35px;">
+                <span>BMI Bot</span>
+            </a>
+            <div class="nav-links desktop-menu">
+                <a href="dashboard.html" class="nav-link">Home</a>
+                <a href="#recommendations" class="nav-link">News/Tips</a>
+                <a href="games.html" class="nav-link">Games</a>
+                <a href="#about" class="nav-link">About</a>
+            </div>
+            <div class="nav-actions">
+                <button id="themeToggle" class="nav-btn" aria-label="Toggle Dark Mode">🌙</button>
+                <button onclick="window.location.href='index.html'" class="nav-btn primary-btn">New Calculation</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header centered-header">
+            <h1>Welcome Back</h1>
+            <p class="tagline">Your personalized health insights</p>
+        </header>
+
+        <!-- Main Content Grid -->
+        <main class="dashboard-grid">
+
+            <!-- 1. BMI Summary Card -->
+            <section class="card summary-card anti-gravity">
+                <h2>Current Status</h2>
+                <div class="summary-content">
+                    <div class="bmi-big-display">
+                        <span id="dashBMI">--</span>
+                        <small>BMI</small>
+                    </div>
+                    <div class="status-badge">
+                        <span id="dashCategory">--</span>
+                    </div>
+                </div>
+
+                <!-- Visual BMI Scale -->
+                <div class="bmi-scale-container">
+                    <div class="bmi-scale-labels">
+                        <span>18.5</span>
+                        <span>25</span>
+                        <span>30</span>
+                    </div>
+                    <div class="bmi-scale-bar">
+                        <div id="bmiMarker" class="bmi-marker"></div>
+                    </div>
+                    <div class="bmi-scale-legend">
+                        <span class="legend-item"><span class="dot under"></span>Under</span>
+                        <span class="legend-item"><span class="dot normal"></span>Normal</span>
+                        <span class="legend-item"><span class="dot over"></span>Over</span>
+                        <span class="legend-item"><span class="dot obese"></span>Obese</span>
+                    </div>
+                </div>
+
+                <div class="insight-box">
+                    <p id="dashInsight">Loading insights...</p>
+                </div>
+            </section>
+
+            <!-- 2. AI Recommendations -->
+            <section id="recommendations" class="card recommendations-card anti-gravity">
+                <h2>AI Recommendations</h2>
+                <div class="rec-grid">
+                    <div class="rec-column">
+                        <h3>🥗 Diet Plan</h3>
+                        <ul id="dietList">
+                            <!-- Populated by JS -->
+                        </ul>
+                    </div>
+                    <div class="rec-column">
+                        <h3>🏃‍♂️ Exercise Plan</h3>
+                        <ul id="exerciseList">
+                            <!-- Populated by JS -->
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. History -->
+            <section class="card history-card anti-gravity">
+                <h2>Health History</h2>
+                <div class="chart-container" style="position: relative; height:300px; width:100%">
+                    <canvas id="bmiChart"></canvas>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>BMI</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div id="about" class="footer-section">
+                <h3>About Us</h3>
+                <p>Healthcare BMI-Bot is dedicated to helping you achieve your wellness goals through AI-powered
+                    insights. Our mission is to make health tracking simple, accessible, and actionable for everyone.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div id="contact" class="footer-section">
+                <h3>Contact</h3>
+                <p>jadhavjd030@gmail.com</p>
+                <p>1-800-HEALTH-AI</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>⚠️ Disclaimer: This tool does not provide medical advice.</p>
+            <p>&copy; 2024 Healthcare BMI Bot. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="antigravity.js"></script>
+    <script src="theme.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+
+</html>
